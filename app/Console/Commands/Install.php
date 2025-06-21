@@ -42,7 +42,7 @@ class Install extends Command implements PromptsForMissingInput
 
     public function sh($command)
     {
-        echo '$ ' . $command . '\n';
+        $this->info($command);
         $process = Process::fromShellCommandline($command);
         $process->run();
         if (!$process->isSuccessful()) {
@@ -50,8 +50,7 @@ class Install extends Command implements PromptsForMissingInput
         }
         echo $process->getOutput();
     }
-
-
+    
     protected function promptForMissingArgumentsUsing(): array
     {
         return [
