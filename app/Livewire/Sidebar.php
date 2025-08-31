@@ -2,12 +2,14 @@
 
 namespace App\Livewire;
 
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
 class Sidebar extends Component
 {
     public function logout(){
-        dd("Handle user logout");
+        Auth::logout();
+        return $this->redirect(route('login'), navigate: true);
     }
 
     public function render()
