@@ -8,7 +8,7 @@
             Code has been sent to {{ $email }}
         @else
             We will send you an email with 6 digit code to recover your account.
-            You must enter the code within 10 minutes. Please check your spam folder.
+            You must enter the code within {{ $timeLimit }} minutes. Please check your spam folder.
         @endif
     </flux:text>
 

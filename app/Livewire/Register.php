@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use App\Models\User;
 use Livewire\Attributes\Title;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
@@ -27,8 +28,8 @@ class Register extends Component
     public function handle()
     {
         $fields = $this->validate();
-        $this->addError('email', 'Email is not registered. Please create an account first.');
-        return $fields;
+        User::create($fields);
+        return $this->redirect('/login', navigate: true);
     }
 
     #[Title("Register")]

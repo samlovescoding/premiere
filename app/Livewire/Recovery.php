@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use App\Mail\AccountRecoveryCode;
+use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 use Livewire\Component;
@@ -18,12 +19,14 @@ class Recovery extends Component
     public $password;
     public $password_confirmation;
 
+    public $timeLimit = 30; // minutes
+
     public function generateCode()
     {
         // Delete older tokens
         DB::table('password_reset_tokens')
             ->where('email', $this->email)
-            ->orWhere('created_at', '>', now()->subMinutes(10))
+            ->orWhere('created_at', '>', now()->subMinutes($this->timeLimit))
             ->delete();
 
         // Generate a new token
@@ -83,7 +86,9 @@ class Recovery extends Component
             return;
         }
 
-        return $fields;
+        $user = User::where('email', $fields['email'])->first();
+        $user->password = password_hash($fields['password'], PASSWORD_DEFAULT);
+        return $this->redirect(route('login'), navigate: true);
     }
 
     public function render()
