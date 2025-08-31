@@ -7,17 +7,8 @@
         <flux:sidebar.toggle class="lg:hidden" icon="x-mark"/>
 
         <flux:navlist variant="outline">
-            <x-sidebar-link href="/" icon="home">
+            <x-sidebar-link href="{{ route('home') }}" icon="home">
                 Home
-            </x-sidebar-link>
-            <x-sidebar-link href="/" icon="film">
-                Movies
-            </x-sidebar-link>
-            <x-sidebar-link href="/" icon="list-bullet">
-                Genres
-            </x-sidebar-link>
-            <x-sidebar-link href="/" icon="users">
-                People
             </x-sidebar-link>
         </flux:navlist>
         <flux:spacer/>
@@ -25,7 +16,7 @@
             <x-sidebar-link href="{{ route('settings') }}" icon="cog-6-tooth">
                 Settings
             </x-sidebar-link>
-            <flux:navlist.item href="/" icon="arrow-right-start-on-rectangle" wire:click="logout">
+            <flux:navlist.item icon="arrow-right-start-on-rectangle" wire:click.prevent="logout">
                 Logout
             </flux:navlist.item>
         </flux:navlist>
