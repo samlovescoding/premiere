@@ -22,7 +22,7 @@
         </flux:navlist>
         <flux:spacer/>
         <flux:navlist variant="outline">
-            <x-sidebar-link href="/" icon="cog-6-tooth">
+            <x-sidebar-link href="{{ route('settings') }}" icon="cog-6-tooth">
                 Settings
             </x-sidebar-link>
             <flux:navlist.item href="/" icon="arrow-right-start-on-rectangle" wire:click="logout">
