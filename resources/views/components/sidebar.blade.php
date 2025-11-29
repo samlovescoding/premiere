@@ -21,13 +21,25 @@
         Home
       </x-sidebar-link>
       <x-sidebar-link
-        href="#"
+        href="{{ route('metadata') }}"
+        icon="sparkles"
+      >
+        Metadata
+      </x-sidebar-link>
+      <x-sidebar-link
+        href="{{ route('import') }}"
+        icon="arrow-down-on-square"
+      >
+        Import
+      </x-sidebar-link>
+      <x-sidebar-link
+        href="{{ route('movies') }}"
         icon="film"
       >
         Movies
       </x-sidebar-link>
       <x-sidebar-link
-        href="#"
+        href="{{ route('shows') }}"
         icon="tv"
       >
         TV Shows
